@@ -1,7 +1,7 @@
 ﻿#include <iostream>;
 using namespace std;
 void Print(int arr[], const int n);
-void Rand(int arr[], const int n);
+void FillRand(int arr[], const int n);
 int Min(int arr[], const int n);
 int Max(int arr[], const int n);
 int Sum(int arr[], const int n);
@@ -20,7 +20,7 @@ void main()
 	setlocale(LC_ALL, "");
 	const int n = 10;
 	int arr[n]={0,1,2,3,4,5,6,7,8,9}, step;
-	FillRand(arr, n);
+	//FillRand(arr, n);
 	Print(arr, n);
 	cout << "Сумма всех элементов массива: " << Sum(arr, n) << endl;
 	cout << "Среддне арифметическое всех элементов массива: " << Average(arr, n) << endl;
