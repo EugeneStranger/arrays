@@ -6,7 +6,8 @@ int Min(int arr[], const int n);
 int Max(int arr[], const int n);
 int Sum(int arr[], const int n);
 double Average(int arr[], const int n);
-void Shift(int arr[],const int n, int step);
+void ShiftLeft(int arr[],const int n, int step);
+void ShiftRight(int arr[],const int n, int step);
 void FillRand(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
@@ -26,12 +27,11 @@ void main()
 	cout << "Минимальный элемент массива: " << Min(arr, n)<<endl;
 	cout << "Максимальный элемент массива: " << Max(arr, n)<<endl;
 	cout << "Введите число, на которое нужно сдвинуть элементы массива вправо: "; cin >> step;
-	Shift(arr, n, step);
+	ShiftRight(arr, n, step);
 	cout << "Массив после сдвига вправо на " << step << "\n";
 	Print(arr, n);
 	cout << "Введите число, на которое нужно сдвинуть элементы массива влево: "; cin >> step;
-	step = n - step;
-	Shift(arr, n, step);
+	ShiftLeft(arr, n , step);
 	cout << "Массив после сдвига влево на " << step << "\n";
 	Print(arr, n);
 }
@@ -79,7 +79,7 @@ int Max(int arr[], const int n)
 	}
 	return max;
 }
-void Shift(int arr[], const int n, int step)
+void ShiftRight(int arr[], const int n, int step)
 {	
 	int buf;
 	for (int i = 1; i <= step; i++)
@@ -92,3 +92,8 @@ void Shift(int arr[], const int n, int step)
 		arr[0] = buf;
 	}
 }
+void ShiftLeft(int arr[],const int n, int step)
+{
+	ShiftRight(arr, n, n - step);
+}
+
