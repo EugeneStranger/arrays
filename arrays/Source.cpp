@@ -1,5 +1,7 @@
 ﻿#include <iostream>;
 using namespace std;
+using std::cout;
+using std::cin;
 
 const int ROWS = 3;
 const int COLS = 4;
@@ -33,10 +35,10 @@ double Sum(double arr[], const int n);
 char Sum(char arr[], const int n);
 int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
-double Average(int arr[], const int n);
-double Average(double arr[], const int n);
-char Average(char arr[], const int n);
-double Average(int arr[ROWS][COLS], const int ROWS, const int COLS);
+double Avg(int arr[], const int n);
+double Avg(double arr[], const int n);
+char Avg(char arr[], const int n);
+double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void ShiftRight(int arr[], const int n, int step);
 void ShiftRight(double arr[], const int n, int step);
@@ -75,7 +77,7 @@ void main()
 	int arr[n], step;
 	/*Print(arr, n);
 	cout << "Сумма всех элементов массива: " << Sum(arr, n) << endl;
-	cout << "Среддне арифметическое всех элементов массива: " << Average(arr, n) << endl;
+	cout << "Среддне арифметическое всех элементов массива: " << Avg(arr, n) << endl;
 	cout << "Минимальный элемент массива: " << Min(arr, n)<<endl;
 	cout << "Максимальный элемент массива: " << Max(arr, n)<<endl;
 	cout << "Введите число, на которое нужно сдвинуть элементы массива вправо: "; cin >> step;
@@ -98,7 +100,7 @@ void main()
 	FillRand(char_arr, SIZE);
 	Print(char_arr, SIZE);
 	cout << Sum(char_arr, SIZE) << "\n";
-	cout << "Среднее значение: " << Average(char_arr, SIZE) << endl;
+	cout << "Среднее значение: " << Avg(char_arr, SIZE) << endl;
 	FillRand(arr, n, 0, 5);
 	Print(arr, n);
 	Search(arr, n);
@@ -115,21 +117,18 @@ void main()
 	cout << "Минимальный элемент массива: "<<Min(i_arr_2, ROWS, COLS) << endl;
 	cout << "Максимальный элемент массива: "<<Max(i_arr_2, ROWS, COLS) << endl;
 	cout << "Сумма всех элементов массива: "<<Sum(i_arr_2, ROWS, COLS) << endl;
-	cout << "Введите число, на которое нужно сдвинуть элементы массива вправо: "; cin >> step;
-	ShiftRight(i_arr_2, ROWS, COLS, step);
-	Print(i_arr_2, ROWS, COLS);
-	cout << "Введите число, на которое нужно сдвинуть элементы массива влево: "; cin >> step;
-	ShiftLeft(i_arr_2, ROWS, COLS, step);
+	cout << "Среднее арифметическое всех элементов массива: " << Avg(i_arr_2, ROWS, COLS) << endl;
+//	cout << "Введите число, на которое нужно сдвинуть элементы массива вправо: "; cin >> step;
+//	ShiftRight(i_arr_2, ROWS, COLS, step);
+//	Print(i_arr_2, ROWS, COLS);
+//	cout << "Введите число, на которое нужно сдвинуть элементы массива влево: "; cin >> step;
+//	ShiftLeft(i_arr_2, ROWS, COLS, step);
+//	Print(i_arr_2, ROWS, COLS);
+	UniqueRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 	cout << "Массив после сортировки: " << endl;
 	Sort(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
-	UniqueRand(i_arr_2, ROWS, COLS);
-	Print(i_arr_2, ROWS, COLS);
-
-
-
-
 
 #endif;
 }
@@ -325,44 +324,21 @@ int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS)
 }
 
 
-double Average(int arr[], const int n)
+double Avg(int arr[], const int n)
 {
-	int sum = 0;
-	for (int i=0;i<n;i++)
-	{
-		sum += arr[i];
-	}
-	return double(sum)/n;
+	return (double)Sum(arr, n) / n;
 }
-double Average(double arr[], const int n)
+double Avg(double arr[], const int n)
 {
-	int sum = 0;
-	for (int i = 0; i < n; i++)
-	{
-		sum += arr[i];
-	}
-	return double(sum) / n;
+	return (double)Sum(arr,n) / n;
 }
-char Average(char arr[], const int n)
+char Avg(char arr[], const int n)
 {
-	int sum = 0;
-	for (int i = 0; i < n; i++)
-	{
-		sum += arr[i];
-	}
-	return sum / n;
+	return Sum(arr, n) / n;
 }
-double Average(int arr[ROWS][COLS], const int ROWS, const int COLS)
+double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS)
 {
-	double sum = 0;
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			sum += arr[i][j];
-		}
-	}
-	return double(sum/(ROWS*COLS));
+	return (double)Sum(arr, ROWS,COLS) / (ROWS*COLS);
 }
 
 
@@ -490,14 +466,17 @@ void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
 	{
 		for (int j = 0; j < COLS; j++)
 		{
-			for (int k = j + 1; k < COLS; k++)
+			for (int k = i; k < ROWS; k++)
 			{
-				if (arr[i][k] < arr[i][j])
-				{
-					arr[i][j] ^= arr[i][k];
-					arr[i][k] ^= arr[i][j];
-					arr[i][j] ^= arr[i][k];
-				}
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+					{
+						if (arr[k][l] < arr[i][j])
+						{
+							arr[i][j] ^= arr[k][l];
+							arr[k][l] ^= arr[i][j];
+							arr[i][j] ^= arr[k][l];
+						}
+					}
 			}
 		}
 	}
@@ -508,7 +487,7 @@ void UniqueRand(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		arr[i] = rand() % 10;
+		arr[i] = rand() % n;
 		for (int j = 0; j < i; j++)
 		{
 			if (arr[i] == arr[j])
@@ -555,22 +534,17 @@ void UniqueRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
 	{
 		for (int j = 0; j < COLS; j++)
 		{
-			arr[i][j] = rand() % 13;
-			bool check=false;
-			for (int k = 0; k < j; k++)
+			arr[i][j] = rand() % (12);
+			for (int k = 0; k <= i; k++)
 			{
-				if (arr[i][j] == arr[i][k])
+				for (int l = 0; k == i ? l < j : l < COLS; l++)
 				{
-					j--;
-					break;
-					check = true;
+					if (arr[i][j] == arr[k][l])
+					{
+						j--;
+						break;
+					}
 				}
-				else check = false;
-			}
-			if (check)
-			{
-				i--;
-				break;
 			}
 		}
 	}
