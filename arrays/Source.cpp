@@ -556,16 +556,21 @@ void UniqueRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
 		for (int j = 0; j < COLS; j++)
 		{
 			arr[i][j] = rand() % 13;
+			bool check=false;
 			for (int k = 0; k < j; k++)
 			{
-				//for (int t=0;t<ROWS;t++)
 				if (arr[i][j] == arr[i][k])
 				{
-					i--;
 					j--;
 					break;
+					check = true;
 				}
-
+				else check = false;
+			}
+			if (check)
+			{
+				i--;
+				break;
 			}
 		}
 	}
