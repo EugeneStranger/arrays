@@ -66,6 +66,7 @@ void UniqueRand(int arr[ROWS][COLS], const int ROWS, const int COLS);
 int Search(int arr[], const int n);
 int Search(double arr[], const int n);
 int Search(char arr[], const int n);
+int Search(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 //#define ARRAYS1
 #define ARRAYS2
@@ -118,17 +119,18 @@ void main()
 	cout << "Максимальный элемент массива: "<<Max(i_arr_2, ROWS, COLS) << endl;
 	cout << "Сумма всех элементов массива: "<<Sum(i_arr_2, ROWS, COLS) << endl;
 	cout << "Среднее арифметическое всех элементов массива: " << Avg(i_arr_2, ROWS, COLS) << endl;
-//	cout << "Введите число, на которое нужно сдвинуть элементы массива вправо: "; cin >> step;
-//	ShiftRight(i_arr_2, ROWS, COLS, step);
-//	Print(i_arr_2, ROWS, COLS);
-//	cout << "Введите число, на которое нужно сдвинуть элементы массива влево: "; cin >> step;
-//	ShiftLeft(i_arr_2, ROWS, COLS, step);
-//	Print(i_arr_2, ROWS, COLS);
 	UniqueRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 	cout << "Массив после сортировки: " << endl;
 	Sort(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
+	cout << "Введите число, на которое нужно сдвинуть элементы массива вправо: "; cin >> step;
+	ShiftRight(i_arr_2, ROWS, COLS, step);
+	Print(i_arr_2, ROWS, COLS);
+	cout << "Введите число, на которое нужно сдвинуть элементы массива влево: "; cin >> step;
+	ShiftLeft(i_arr_2, ROWS, COLS, step);
+	Print(i_arr_2, ROWS, COLS);
+
 
 #endif;
 }
@@ -383,18 +385,22 @@ void ShiftRight(char arr[], const int n, int step)
 }
 void ShiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int step)
 {
-	int buf;
-	for (int i = 0; i < ROWS; i++)
+
+	for (int i = 0; i < step; i++)
 	{
-		for (int j = 1; j <= step; j++)
+		int buf = arr[ROWS-1][COLS - 1];
+		for (int j = ROWS-1; j >=0; j--)
 		{
-			buf = arr[i][COLS - 1];
-			for (int k = COLS - 1; k > 0; k--)
+			for (int k = COLS - 1; k >= 0; k--)
 			{
-				arr[i][k] = arr[i][k-1];
+				if ((k == 0) && (j != 0))
+				{
+					arr[j][k] = arr[j - 1][COLS - 1];
+				}
+				else arr[j][k] = arr[j][k-1];
 			}
-			arr[i][0] = buf;
 		}
+		arr[0][0] = buf;
 	}
 }
 
@@ -412,7 +418,7 @@ void ShiftLeft(char arr[], const int n, int step)
 }
 void ShiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int step)
 {
-	ShiftRight(arr, ROWS, COLS, COLS - step);
+	ShiftRight(arr, ROWS, COLS, COLS*ROWS - step);
 }
 
 void Sort(int arr[], const int n)
@@ -630,5 +636,9 @@ int Search(char arr[], const int n)
 		if (count) printf("Значение %i повторяется %i раз\n", arr[i], count);
 		//cout << "Значение a[" << i << "]=" << arr[i]<< " повторяется " << count << "раз\n";
 	}
+	return 0;
+}
+int Search(int arr[ROWS][COLS], const int ROWS, const int COLS) //??????????????????????????????????????
+{
 	return 0;
 }
