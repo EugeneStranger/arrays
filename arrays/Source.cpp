@@ -3,7 +3,7 @@ using namespace std;
 using std::cout;
 using std::cin;
 
-const int ROWS = 3;
+const int ROWS = 4;
 const int COLS = 4;
 
 void Print(int arr[], const int n);
@@ -540,18 +540,25 @@ void UniqueRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
 	{
 		for (int j = 0; j < COLS; j++)
 		{
-			arr[i][j] = rand() % (12);
-			for (int k = 0; k <= i; k++)
+			bool unique = true;
+			do
 			{
-				for (int l = 0; k == i ? l < j : l < COLS; l++)
+				unique = true;
+				arr[i][j] = rand() % (ROWS * COLS);
+				for (int k = 0; k <= i; k++)
 				{
-					if (arr[i][j] == arr[k][l])
+					for (int l = 0; k == i ? l < j : l < COLS; l++)
 					{
-						j--;
-						break;
+						if (arr[i][j] == arr[k][l])
+						{
+							//j--;
+							unique = false;
+							break;
+						}
 					}
+					if (!unique)break;
 				}
-			}
+			} //while (!unique);
 		}
 	}
 }
