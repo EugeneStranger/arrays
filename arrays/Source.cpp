@@ -3,8 +3,8 @@ using namespace std;
 using std::cout;
 using std::cin;
 
-const int ROWS = 4;
-const int COLS = 4;
+const int ROWS = 5;
+const int COLS = 5;
 
 void Print(int arr[], const int n);
 void Print(double arr[], const int n);
@@ -130,6 +130,9 @@ void main()
 	cout << "Введите число, на которое нужно сдвинуть элементы массива влево: "; cin >> step;
 	ShiftLeft(i_arr_2, ROWS, COLS, step);
 	Print(i_arr_2, ROWS, COLS);
+	FillRand(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
+	Search(i_arr_2, ROWS, COLS);
 
 
 #endif;
@@ -161,7 +164,7 @@ void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
 	{
 		for (int j = 0; j < COLS; j++)
 		{
-			arr[i][j] = rand() % 100;
+			arr[i][j] = rand() % 4;
 		}
 	}
 }
@@ -558,7 +561,7 @@ void UniqueRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
 					}
 					if (!unique)break;
 				}
-			} //while (!unique);
+			} while (!unique);
 		}
 	}
 }
@@ -645,7 +648,40 @@ int Search(char arr[], const int n)
 	}
 	return 0;
 }
-int Search(int arr[ROWS][COLS], const int ROWS, const int COLS) //??????????????????????????????????????
+int Search(int arr[ROWS][COLS], const int ROWS, const int COLS) 
 {
+		for (int i = 0; i < ROWS; i++)
+		{
+			for (int j = 0; j < COLS; j++)
+			{
+				bool met_before = false;
+				for (int k = 0; k <= i; k++)
+				{
+				// if (met_before) break;
+				  for (int l = 0; k == i ? l < j : l < COLS; l++)
+					{
+						if (arr[i][j] == arr[k][l])
+						{
+							met_before = true;
+							break;
+						}
+					}
+				}
+				if (met_before) continue;
+				int count = 0;
+				for (int k = i; k < ROWS; k++)
+				{
+					for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+					{
+						if (arr[i][j] == arr[k][l])
+						{
+							count++;
+						}
+					}
+				}
+				if (count) printf("Значение %i повторяется %i раз\n", arr[i][j], count);
+				//cout << "Значение a[" << i << "]=" << arr[i][j]<< " повторяется " << count << "раз\n";
+			}
+		}
 	return 0;
 }
