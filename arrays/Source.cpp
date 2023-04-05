@@ -79,9 +79,9 @@ void UniqueRand(char arr[ROWS][COLS], const int ROWS, const int COLS);
 int Search(int arr[], const int n);
 int Search(double arr[], const int n);
 int Search(char arr[], const int n);
-int Search(int arr[ROWS][COLS], const int ROWS, const int COLS);
-double Search(double arr[ROWS][COLS], const int ROWS, const int COLS);
-char Search(char arr[ROWS][COLS], const int ROWS, const int COLS);
+void Search(int arr[ROWS][COLS], const int ROWS, const int COLS);
+void Search(double arr[ROWS][COLS], const int ROWS, const int COLS);
+void Search(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 //#define ARRAYS1
 #define ARRAYS2
@@ -128,7 +128,7 @@ void main()
 	Print(d_arr, SIZE);
 #endif;
 #ifdef ARRAYS2
-	int i_arr_2[ROWS][COLS];
+	char i_arr_2[ROWS][COLS];
 	int step = 0;
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
@@ -927,7 +927,7 @@ int Search(char arr[], const int n)
 	}
 	return 0;
 }
-int Search(int arr[ROWS][COLS], const int ROWS, const int COLS) 
+void Search(int arr[ROWS][COLS], const int ROWS, const int COLS) 
 {
 		for (int i = 0; i < ROWS; i++)
 		{
@@ -961,9 +961,8 @@ int Search(int arr[ROWS][COLS], const int ROWS, const int COLS)
 				//cout << "Значение a[" << i << "]=" << arr[i][j]<< " повторяется " << count << "раз\n";
 			}
 		}
-	return 0;
 }
-double Search(double arr[ROWS][COLS], const int ROWS, const int COLS)
+void Search(double arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	for (int i = 0; i < ROWS; i++)
 	{
@@ -997,9 +996,8 @@ double Search(double arr[ROWS][COLS], const int ROWS, const int COLS)
 			//cout << "Значение a[" << i << "]=" << arr[i][j]<< " повторяется " << count << "раз\n";
 		}
 	}
-	return 0;
 }
-char Search(char arr[ROWS][COLS], const int ROWS, const int COLS)
+void Search(char arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	for (int i = 0; i < ROWS; i++)
 	{
@@ -1033,5 +1031,4 @@ char Search(char arr[ROWS][COLS], const int ROWS, const int COLS)
 			if (count) cout << "Значение "<<arr[i][j]<< " повторяется " << count << "раз\n";
 		}
 	}
-	return 0;
 }
