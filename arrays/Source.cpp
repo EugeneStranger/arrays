@@ -129,7 +129,6 @@ void main()
 #endif;
 #ifdef ARRAYS2
 	char i_arr_2[ROWS][COLS];
-	int step = 0;
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 	cout << "Символьный массив из уникальных значений\n";
@@ -142,6 +141,7 @@ void main()
 	cout << "Массив после сортировки: " << endl;
 	Sort(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
+	int step = 0;
 	cout << "Введите число, на которое нужно сдвинуть элементы массива вправо: "; cin >> step;
 	ShiftRight(i_arr_2, ROWS, COLS, step);
 	Print(i_arr_2, ROWS, COLS);
