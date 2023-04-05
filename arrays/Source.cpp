@@ -10,69 +10,85 @@ void Print(int arr[], const int n);
 void Print(double arr[], const int n);
 void Print(char arr[], const int n);
 void Print(int arr[ROWS][COLS], const int ROWS, const int COLS);
-
+void Print(double arr[ROWS][COLS], const int ROWS, const int COLS);
+void Print(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void FillRand(int arr[], const int n, int minRand, int maxRand);
 void FillRand(double arr[], const int n);
 void FillRand(char arr[], const int n);
 void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS);
-
+void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS);
+void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int Min(int arr[], const int n);
 double Min(double arr[], const int n);
 char Min(char arr[], const int n);
 int Min(int arr[ROWS][COLS], const int ROWS, const int COLS);
-
+double Min(double arr[ROWS][COLS], const int ROWS, const int COLS);
+char Min(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int Max(int arr[], const int n);
 double Max(double arr[], const int n);
 char Max(char arr[], const int n);
 int Max(int arr[ROWS][COLS], const int ROWS, const int COLS);
-
+double Max(double arr[ROWS][COLS], const int ROWS, const int COLS);
+char Max(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int Sum(int arr[], const int n);
 double Sum(double arr[], const int n);
 char Sum(char arr[], const int n);
 int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS);
+double Sum(double arr[ROWS][COLS], const int ROWS, const int COLS);
+char Sum(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 double Avg(int arr[], const int n);
 double Avg(double arr[], const int n);
 char Avg(char arr[], const int n);
 double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS);
+double Avg(double arr[ROWS][COLS], const int ROWS, const int COLS);
+char Avg(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void ShiftRight(int arr[], const int n, int step);
 void ShiftRight(double arr[], const int n, int step);
 void ShiftRight(char arr[], const int n, int step);
 void ShiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int step);
+void ShiftRight(double arr[ROWS][COLS], const int ROWS, const int COLS, int step);
+void ShiftRight(char arr[ROWS][COLS], const int ROWS, const int COLS, int step);
 
 void ShiftLeft(int arr[],const int n, int step);
 void ShiftLeft(double arr[], const int n, int step);
 void ShiftLeft(char arr[], const int n, int step);
 void ShiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int step);
-
+void ShiftLeft(double arr[ROWS][COLS], const int ROWS, const int COLS, int step);
+void ShiftLeft(char arr[ROWS][COLS], const int ROWS, const int COLS, int step);
 
 void Sort(int arr[], const int n);
 void Sort(double arr[], const int n);
 void Sort(char arr[], const int n);
 void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS);
-
+void Sort(double arr[ROWS][COLS], const int ROWS, const int COLS);
+void Sort(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void UniqueRand(int arr[], const int n);
 void UniqueRand(double arr[], const int n);
 void UniqueRand(char arr[], const int n);
 void UniqueRand(int arr[ROWS][COLS], const int ROWS, const int COLS);
-
+void UniqueRand(double arr[ROWS][COLS], const int ROWS, const int COLS);
+void UniqueRand(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int Search(int arr[], const int n);
 int Search(double arr[], const int n);
 int Search(char arr[], const int n);
 int Search(int arr[ROWS][COLS], const int ROWS, const int COLS);
+double Search(double arr[ROWS][COLS], const int ROWS, const int COLS);
+char Search(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 //#define ARRAYS1
 #define ARRAYS2
 void main()
 {
 	setlocale(LC_ALL, "");
+	//cout << char(122);
 #ifdef ARRAYS1 	
 	const int n = 10;
 	int arr[n], step;
@@ -112,15 +128,17 @@ void main()
 	Print(d_arr, SIZE);
 #endif;
 #ifdef ARRAYS2
-	int i_arr_2[ROWS][COLS], step=0;
+	int i_arr_2[ROWS][COLS];
+	int step = 0;
 	FillRand(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
+	cout << "Символьный массив из уникальных значений\n";
+	UniqueRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 	cout << "Минимальный элемент массива: "<<Min(i_arr_2, ROWS, COLS) << endl;
 	cout << "Максимальный элемент массива: "<<Max(i_arr_2, ROWS, COLS) << endl;
 	cout << "Сумма всех элементов массива: "<<Sum(i_arr_2, ROWS, COLS) << endl;
 	cout << "Среднее арифметическое всех элементов массива: " << Avg(i_arr_2, ROWS, COLS) << endl;
-	UniqueRand(i_arr_2, ROWS, COLS);
-	Print(i_arr_2, ROWS, COLS);
 	cout << "Массив после сортировки: " << endl;
 	Sort(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
@@ -130,11 +148,11 @@ void main()
 	cout << "Введите число, на которое нужно сдвинуть элементы массива влево: "; cin >> step;
 	ShiftLeft(i_arr_2, ROWS, COLS, step);
 	Print(i_arr_2, ROWS, COLS);
+	system("Pause");
+	cout << "\nЗададим новый массив: \n";
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 	Search(i_arr_2, ROWS, COLS);
-
-
 #endif;
 }
 void FillRand(int arr[], const int n, int minRand, int maxRand)
@@ -155,7 +173,7 @@ void FillRand(char arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		arr[i] = (rand()%255);
+		arr[i] = rand()%255;
 	}
 }
 void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
@@ -168,7 +186,26 @@ void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
 		}
 	}
 }
-
+void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			arr[i][j] = double((rand() % 1000000)) / 1000;
+		}
+	}
+}
+void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			arr[i][j] = (122 - rand()%(122-97+1));
+		}
+	}
+}
 
 void Print(int arr[], const int n)
 {
@@ -206,7 +243,30 @@ void Print(int arr[ROWS][COLS], const int ROWS, const int COLS)
 	}
 	cout << endl;
 }
-
+void Print(double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << "\t";
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
+void Print(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << "\t";
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
 
 int Min(int arr[], const int n)
 {
@@ -238,6 +298,30 @@ char Min(char arr[], const int n)
 int Min(int arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	int min = arr[0][0];
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (arr[i][j] < min) min = arr[i][j];
+		}
+	}
+	return min;
+}
+double Min(double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	double min = arr[0][0];
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (arr[i][j] < min) min = arr[i][j];
+		}
+	}
+	return min;
+}
+char Min(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	char min = arr[0][0];
 	for (int i = 0; i < ROWS; i++)
 	{
 		for (int j = 0; j < COLS; j++)
@@ -287,6 +371,30 @@ int Max(int arr[ROWS][COLS], const int ROWS, const int COLS)
 	}
 	return max;
 }
+double Max(double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	double max = arr[0][0];
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (arr[i][j] > max) max = arr[i][j];
+		}
+	}
+	return max;
+}
+char Max(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	char max = arr[0][0];
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (arr[i][j] > max) max = arr[i][j];
+		}
+	}
+	return max;
+}
 
 int Sum(int arr[], const int n)
 {
@@ -327,7 +435,30 @@ int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS)
 	}
 	return sum;
 }
-
+double Sum(double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	double sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			sum += arr[i][j];
+		}
+	}
+	return sum;
+}
+char Sum(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	char sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			sum += arr[i][j];
+		}
+	}
+	return sum;
+}
 
 double Avg(int arr[], const int n)
 {
@@ -345,7 +476,15 @@ double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	return (double)Sum(arr, ROWS,COLS) / (ROWS*COLS);
 }
+double Avg(double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	return (double)Sum(arr, ROWS, COLS) / (ROWS * COLS);
+}
+char Avg(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
 
+	return Sum(arr, ROWS, COLS) / (ROWS * COLS);
+}
 
 void ShiftRight(int arr[], const int n, int step)
 {	
@@ -406,6 +545,44 @@ void ShiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int step)
 		arr[0][0] = buf;
 	}
 }
+void ShiftRight(double arr[ROWS][COLS], const int ROWS, const int COLS, int step)
+{
+	for (int i = 0; i < step; i++)
+	{
+		double buf = arr[ROWS - 1][COLS - 1];
+		for (int j = ROWS - 1; j >= 0; j--)
+		{
+			for (int k = COLS - 1; k >= 0; k--)
+			{
+				if ((k == 0) && (j != 0))
+				{
+					arr[j][k] = arr[j - 1][COLS - 1];
+				}
+				else arr[j][k] = arr[j][k - 1];
+			}
+		}
+		arr[0][0] = buf;
+	}
+}
+void ShiftRight(char arr[ROWS][COLS], const int ROWS, const int COLS, int step)
+{
+	for (int i = 0; i < step; i++)
+	{
+		char buf = arr[ROWS - 1][COLS - 1];
+		for (int j = ROWS - 1; j >= 0; j--)
+		{
+			for (int k = COLS - 1; k >= 0; k--)
+			{
+				if ((k == 0) && (j != 0))
+				{
+					arr[j][k] = arr[j - 1][COLS - 1];
+				}
+				else arr[j][k] = arr[j][k - 1];
+			}
+		}
+		arr[0][0] = buf;
+	}
+}
 
 void ShiftLeft(int arr[],const int n, int step)
 {
@@ -422,6 +599,14 @@ void ShiftLeft(char arr[], const int n, int step)
 void ShiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int step)
 {
 	ShiftRight(arr, ROWS, COLS, COLS*ROWS - step);
+}
+void ShiftLeft(double arr[ROWS][COLS], const int ROWS, const int COLS, int step)
+{
+	ShiftRight(arr, ROWS, COLS, COLS * ROWS - step);
+}
+void ShiftLeft(char arr[ROWS][COLS], const int ROWS, const int COLS, int step)
+{
+	ShiftRight(arr, ROWS, COLS, COLS * ROWS - step);
 }
 
 void Sort(int arr[], const int n)
@@ -490,7 +675,48 @@ void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
 		}
 	}
 }
-
+void Sort(double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			for (int k = i; k < ROWS; k++)
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+				{
+					if (arr[k][l] < arr[i][j])
+					{
+						double buf = arr[k][l] + arr[i][j];
+						arr[i][j] = buf - arr[i][j];
+						arr[k][l] = buf -  arr[k][l];
+					}
+				}
+			}
+		}
+	}
+}
+void Sort(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			for (int k = i; k < ROWS; k++)
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+				{
+					if (arr[k][l] < arr[i][j])
+					{
+						arr[i][j] ^= arr[k][l];
+						arr[k][l] ^= arr[i][j];
+						arr[i][j] ^= arr[k][l];
+					}
+				}
+			}
+		}
+	}
+}
 
 void UniqueRand(int arr[], const int n)
 {
@@ -565,7 +791,60 @@ void UniqueRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
 		}
 	}
 }
-
+void UniqueRand(double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			bool unique = true;
+			do
+			{
+				unique = true;
+				arr[i][j] = double((rand() % 1000000)) / 1000;
+				for (int k = 0; k <= i; k++)
+				{
+					for (int l = 0; k == i ? l < j : l < COLS; l++)
+					{
+						if (arr[i][j] == arr[k][l])
+						{
+							unique = false;
+							break;
+						}
+					}
+					if (!unique)break;
+				}
+			} while (!unique);
+		}
+	}
+}
+void UniqueRand(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			bool unique = true;
+			do
+			{
+				unique = true;
+				arr[i][j] = (122 - rand() % (122 - 97 + 1));
+				for (int k = 0; k <= i; k++)
+				{
+					for (int l = 0; k == i ? l < j : l < COLS; l++)
+					{
+						if (arr[i][j] == arr[k][l])
+						{
+							unique = false;
+							break;
+						}
+					}
+					if (!unique)break;
+				}
+			} while (!unique);
+		}
+	}
+}
 
 int Search(int arr[], const int n)
 {
@@ -657,7 +936,6 @@ int Search(int arr[ROWS][COLS], const int ROWS, const int COLS)
 				bool met_before = false;
 				for (int k = 0; k <= i; k++)
 				{
-				// if (met_before) break;
 				  for (int l = 0; k == i ? l < j : l < COLS; l++)
 					{
 						if (arr[i][j] == arr[k][l])
@@ -683,5 +961,77 @@ int Search(int arr[ROWS][COLS], const int ROWS, const int COLS)
 				//cout << "Значение a[" << i << "]=" << arr[i][j]<< " повторяется " << count << "раз\n";
 			}
 		}
+	return 0;
+}
+double Search(double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			bool met_before = false;
+			for (int k = 0; k <= i; k++)
+			{
+				for (int l = 0; k == i ? l < j : l < COLS; l++)
+				{
+					if (arr[i][j] == arr[k][l])
+					{
+						met_before = true;
+						break;
+					}
+				}
+			}
+			if (met_before) continue;
+			int count = 0;
+			for (int k = i; k < ROWS; k++)
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+				{
+					if (arr[i][j] == arr[k][l])
+					{
+						count++;
+					}
+				}
+			}
+			if (count) printf("Значение %i повторяется %i раз\n", arr[i][j], count);
+			//cout << "Значение a[" << i << "]=" << arr[i][j]<< " повторяется " << count << "раз\n";
+		}
+	}
+	return 0;
+}
+char Search(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			bool met_before = false;
+			for (int k = 0; k <= i; k++)
+			{
+				for (int l = 0; k == i ? l < j : l < COLS; l++)
+				{
+					if (arr[i][j] == arr[k][l])
+					{
+						met_before = true;
+						break;
+					}
+				}
+			}
+			if (met_before) continue;
+			int count = 0;
+			for (int k = i; k < ROWS; k++)
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+				{
+					if (arr[i][j] == arr[k][l])
+					{
+						count++;
+					}
+				}
+			}
+			//if (count) printf("Значение %i повторяется %i раз\n", arr[i][j], count);
+			if (count) cout << "Значение "<<arr[i][j]<< " повторяется " << count << "раз\n";
+		}
+	}
 	return 0;
 }
