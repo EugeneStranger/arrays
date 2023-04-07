@@ -38,7 +38,7 @@ void FillRand(T arr[], const int n, int m)
 	}
 }
 template <class T>
-void FillRand(T arr[], const int n, int m, int q)
+void FillRand(double arr[], const int n, int m, int q)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -393,8 +393,9 @@ void main()
 	setlocale(LC_ALL, "");
 #ifdef ARRAYS1
 	const int n = 10;
-	int arr[n], step;
-	FillRand(arr, n, 20);
+	char arr[n];
+	int step;
+	FillRand(arr, n, 255);
 	Print(arr, n);
 	cout << "Минимальный элемент массива: " << Min(arr, n) << endl;
 	cout << "Максимальный элемент массива: " << Max(arr, n) << endl;
@@ -402,7 +403,7 @@ void main()
 	cout << "Сумма всех элементов массива: " << Sum(arr, n) << endl;
 	system("pause");
 	cout << "Массив из уникальных чисел: \n";
-	UniqueRand(arr, n, n);
+	UniqueRand(arr, n, 255);
 	Print(arr, n);
 	cout << "Введите шаг сдвига вправо: "; cin >> step;
 	ShiftRight(arr, n, step);
@@ -415,11 +416,14 @@ void main()
 	Sort(arr, n);
 	Print(arr, n);
 	system("pause");
+	FillRand(arr, n,255);
+	Print(arr, n);
 	cout << "Поиск повторяющихся элементов массива: \n";
 	Search(arr, n);
 #endif;
 #ifdef ARRAYS2
-	int arr2[ROWS][COLS], step;
+	char arr2[ROWS][COLS];
+	int	step;
 	FillRand(arr2,ROWS,COLS, 25);
 	Print(arr2, ROWS, COLS);
 	cout << "Минимальный элемент массива: " << Min(arr2, ROWS, COLS) << endl;
