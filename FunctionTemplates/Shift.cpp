@@ -1,3 +1,5 @@
+#include<iostream>
+
 #include "Shift.h"
 
 template<typename T>void ShiftRight(T arr[], const int n, int step)

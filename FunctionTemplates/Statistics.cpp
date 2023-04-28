@@ -1,3 +1,4 @@
+#include<iostream>
 #include "Statistics.h"
 
 template<typename T>T Min(const T arr[], const int n)
@@ -44,7 +45,6 @@ template<typename T>T Max(const T arr[ROWS][COLS], const int ROWS, const int COL
 	return max;
 }
 
-
 template<typename T>T Sum(const T arr[], const int n)
 {
 	T sum = 0;
@@ -54,30 +54,9 @@ template<typename T>T Sum(const T arr[], const int n)
 	}
 	return sum;
 }
-unsigned int Sum(const unsigned char arr[], const int n)
-{
-	unsigned int sum = 0;
-	for (int i = 0; i < n; i++)
-	{
-		sum += arr[i];
-	}
-	return sum;
-}
 template<typename T>T Sum(const T arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	T sum = 0;
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			sum += arr[i][j];
-		}
-	}
-	return sum;
-}
-unsigned int Sum(const unsigned char arr[ROWS][COLS], const int ROWS, const int COLS)
-{
-	unsigned char sum = 0;
 	for (int i = 0; i < ROWS; i++)
 	{
 		for (int j = 0; j < COLS; j++)

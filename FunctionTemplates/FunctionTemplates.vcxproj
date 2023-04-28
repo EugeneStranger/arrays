@@ -132,7 +132,6 @@
     <ClCompile Include="Search.cpp" />
     <ClCompile Include="Shift.cpp" />
     <ClCompile Include="Sort.cpp" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="Statistics.cpp" />
   </ItemGroup>
   <ItemGroup>
